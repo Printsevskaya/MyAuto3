@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.concurrent.TimeUnit;
 
 public class ProfilePage {
 
@@ -27,8 +28,8 @@ public class ProfilePage {
      * метод для получения имени пользователя из меню пользователя
      */
     public String getUserName() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'account__name_hasAccentLetter')]")));
+//        WebDriverWait wait = new WebDriverWait(driver, 10);
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'account__name_hasAccentLetter')]")));
         String userName = userMenu.getText();
         return userName; }
     /**

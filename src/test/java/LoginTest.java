@@ -1,10 +1,17 @@
+import junit.framework.Assert;
 import org.example.ConfProperties;
 import org.example.LoginPage;
 import org.example.ProfilePage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+//import org.junit.AfterClass;
+//import org.junit.Assert;
+//import org.junit.BeforeClass;
+//import org.junit.Test;
+import java.util.concurrent.TimeUnit;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,8 +37,27 @@ public class LoginTest {
 
     @Test
     public void loginTest(){
-
+        //значение login/password берутся из файла настроек по аналогии с chromedriver
+//и loginpage
+//вводим логин
+        loginPage.inputLogin(ConfProperties.getProperty("login"));
+        //нажимаем кнопку входа
+        loginPage.clickLoginBtn();
+        //вводим пароль
+        loginPage.inputPasswd(ConfProperties.getProperty("password"));
+        //нажимаем кнопку входа
+        loginPage.clickLoginBtn();
+        //получаем отображаемый логин
+        String user = profilePage.getUserName();
+        //и сравниваем его с логином из файла настроек
+        Assert.assertEquals(ConfProperties.getProperty("login"), user);
     }
 
+
+    @AfterClass
+    public static void tearDown() {
+        profilePage.entryMenu();
+        profilePage.userLogout();
+        driver.quit(); }
 
 }
