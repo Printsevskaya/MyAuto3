@@ -9,7 +9,7 @@ public class ConfProperties {
     static {
         try {
             //указание пути до файла с настройками
-            fileInputStream = new FileInputStream("src/test/java/resources/conf.properties");
+            fileInputStream = new FileInputStream("C:\\Users\\julia\\IdeaProjects\\MyAuto3\\src\\test\\java\\recources\\conf.properties");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {
