@@ -16,34 +16,27 @@ public class ProfilePage {
     public ProfilePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver; }
-    /**
-     * определение локатора меню пользователя
-     */
+
 //    @FindBy(xpath = "//*[contains(@class, 'account__name_hasAccentLetter')]")
-    @FindBy(xpath = "//*[contains(@class, 'user-pic__image')]")
+    @FindBy(xpath = "//*[contains(@class, 'user-account user-account_has-ticker_yes user-account_has-accent-letter_yes legouser__current-account i-bem')]")
     private WebElement userMenu;
-    /**
-     * определение локатора кнопки выхода из аккаунта
-     */
-//    @FindBy(xpath = "//*[contains(@class, 'menu-item_action_exit menu__item menu__item_type_link')]"
+
     @FindBy(xpath = "//*[contains(@class, 'menu__item menu__item_type_link legouser__menu-item legouser__menu-item_action_exit\" data-bem=')]")
     private WebElement logoutBtn;
-    /**
-     * метод для получения имени пользователя из меню пользователя
-     */
+
     public String getUserName() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'account__name_hasAccentLetter')]")));
+        //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'user-account__name')]")));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'user-account user-account_has-subname_yes legouser__account i-bem')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'user-account__subname')]")));
+        //user-account user-account_has-subname_yes legouser__account i-bem
+        //user-account__subname
         String userName = userMenu.getText();
         return userName; }
-    /**
-     * метод для нажатия кнопки меню пользователя
-     */
+
     public void entryMenu() {
         userMenu.click(); }
-    /**
-     * метод для нажатия кнопки выхода из аккаунта
-     */
+
     public void userLogout() {
         logoutBtn.click(); }
 
