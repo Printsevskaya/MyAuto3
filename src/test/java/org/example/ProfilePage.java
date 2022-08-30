@@ -17,20 +17,21 @@ public class ProfilePage {
         PageFactory.initElements(driver, this);
         this.driver = driver; }
 
-//    @FindBy(xpath = "//*[contains(@class, 'account__name_hasAccentLetter')]")
+//    @FindBy(xpath = "//*[contains(@class, 'user-account user-account_has-ticker_yes user-account_has-accent-letter_yes legouser__current-account i-bem')]")
+//    private WebElement userMenu;
+
     @FindBy(xpath = "//*[contains(@class, 'user-account user-account_has-ticker_yes user-account_has-accent-letter_yes legouser__current-account i-bem')]")
     private WebElement userMenu;
 
-    @FindBy(xpath = "//*[contains(@class, 'menu__item menu__item_type_link legouser__menu-item legouser__menu-item_action_exit\" data-bem=')]")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div[2]/div[1]/header/div[2]/div[2]/div/div/div/ul/ul/li[6]/a")
     private WebElement logoutBtn;
 
     public String getUserName() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         //wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'user-account__name')]")));
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'user-account user-account_has-subname_yes legouser__account i-bem')]")));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'user-account__subname')]")));
-        //user-account user-account_has-subname_yes legouser__account i-bem
-        //user-account__subname
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(@class, 'user-account__subname')]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div[2]/div[1]/header/div[2]/div[2]/div/div/div/ul/div[1]/div/span/span")));
         String userName = userMenu.getText();
         return userName; }
 
