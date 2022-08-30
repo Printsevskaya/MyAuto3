@@ -10,11 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
-//import org.junit.AfterClass;
-//import org.junit.Assert;
-//import org.junit.BeforeClass;
-//import org.junit.Test;
-import java.util.concurrent.TimeUnit;
 
 import java.util.concurrent.TimeUnit;
 
@@ -42,18 +37,16 @@ public class LoginTest {
         loginPage.inputLogin(ConfProperties.getProperty("login"));
         loginPage.clickLoginBtn();
        // driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
         loginPage.inputPasswd(ConfProperties.getProperty("password"));
         loginPage.clickLoginBtn();
         String user = profilePage.getUserName();
         Assert.assertEquals(ConfProperties.getProperty("login"), user);
     }
 
-
     @AfterAll
     public static void tearDown() {
         profilePage.entryMenu();
-        profilePage.userLogout();
+        //profilePage.userLogout();
         driver.quit(); }
 
 }
