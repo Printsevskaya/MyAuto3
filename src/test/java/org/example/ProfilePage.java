@@ -37,8 +37,8 @@ public class ProfilePage {
 
     public void entryMenu() {
         userMenu.click(); }
-
     public void userLogout() {
+
         logoutBtn.click(); }
 
 

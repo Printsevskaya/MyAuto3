@@ -32,13 +32,15 @@ public class LoginTest {
     }
 
     @Test
-    public void loginTest(){
+    public void loginTest() throws InterruptedException {
 
         loginPage.inputLogin(ConfProperties.getProperty("login"));
         loginPage.clickLoginBtn();
        // driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         loginPage.inputPasswd(ConfProperties.getProperty("password"));
         loginPage.clickLoginBtn();
+        //driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        Thread.sleep(10000);
         String user = profilePage.getUserName();
         Assert.assertEquals(ConfProperties.getProperty("login"), user);
     }
@@ -46,7 +48,7 @@ public class LoginTest {
     @AfterAll
     public static void tearDown() {
         profilePage.entryMenu();
-        //profilePage.userLogout();
+        profilePage.userLogout();
         driver.quit(); }
 
 }
